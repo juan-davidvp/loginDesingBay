@@ -1,0 +1,299 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Altura completa de la ventana */
+    overflow: hidden; /* Evitar scroll */
+}
+
+/* Contenedor principal - FULLPAGE con espaciado entre columnas */
+.auth-wrapper {
+    display: flex;
+    height: 100vh; /* Altura completa */
+    width: 100vw; /* Ancho completo */
+    gap: 2rem; /* ESPACIADO entre las dos columnas */
+    padding: 2rem; /* Padding general del contenedor */
+    box-sizing: border-box;
+}
+
+/* Columna izquierda para la imagen - Ajustada al diseño */
+.auth-image-column {
+    color: white;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 25px; /* Bordes más redondeados */
+    background-image: linear-gradient(rgba(247, 202, 203, 0.192), #507DA0   ), url('img/backgroundLogin.jpg');
+    background-size: cover;
+    background-position: center;
+    flex: 1; /* Toma el espacio disponible */
+    min-height: 0; /* Para que funcione correctamente el flex */
+}
+
+.auth-image-column h3 {
+    margin-bottom: 0.5rem; 
+    font-weight: 200; 
+    font-size: 2rem;
+    text-shadow: #343a40 1px 1px 2px; /* Sombra para el texto */
+}
+
+.auth-image-column p {
+    font-size: 3rem;
+    font-weight: 600;
+    text-shadow: #343a40bd 0px 5px 10px; 
+}
+
+
+
+/* Columna derecha para los formularios - Ajustada al diseño */
+.auth-form-column {
+    background-color: #fff;
+    padding: 3rem;
+    border-radius: 25px; /* Bordes más redondeados */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Toma el espacio disponible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 0;
+}
+
+/* Logo de Davivienda */
+.davivienda-logo-auth {
+    display: block;
+    margin: 0 auto 2rem auto;
+    width: 28rem;
+}
+
+/* Pestañas más redondeadas */
+.nav-tabs {
+    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.nav-tabs .nav-link {
+    flex-grow: 1;
+    text-align: center;
+    background-color: #f8f9fa;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+    border-radius: 25px; /* MÁS REDONDEADOS */
+    margin: 0 0.25rem;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #2A9DF5 ;
+    color: white;
+    border-color: #507DA0 ;
+    font-weight: bold;
+}
+
+.nav-tabs .nav-link:not(.active):hover {
+    background-color: #F5A42A ;
+    color: white;
+    font-weight: bold;
+}
+
+/* Mensajes de éxito/error */
+.auth-message {
+    padding: 0.75rem 1.25rem;
+    margin-top: 1rem;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    display: none; /* Oculto por defecto */
+}
+
+.auth-message.success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border: 1px solid #badbcc;
+}
+
+.auth-message.error {
+    color: #842029;
+    background-color: #f8d7da;
+    border: 1px solid #f5c2c7;
+}
+
+/* Transición para tab-panes */
+.tab-content > .tab-pane {
+    display: none;
+}
+
+.tab-content > .active {
+    display: block;
+}
+
+.toast-container {
+    z-index: 2; /* Asegurar que el toast esté por encima de otros elementos */
+    position: fixed;
+    text-align: center;   
+}
+
+.toast-container h4{
+    text-align: center;   
+}
+
+
+/* Espaciado entre campos */
+.mb-3 {
+    margin-bottom: 1.5rem !important;
+}
+
+
+
+/* Campos de entrada MÁS REDONDEADOS */
+.form-control {
+    border-radius: 25px;
+    border: 2px solid #e9ecef;
+    padding: 0.875rem 1.25rem;
+}
+
+/* Títulos y textos */
+.auth-form-column h2 {
+    color: #343a40;
+    margin-bottom: 0.4rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.auth-form-column .form-text-description {
+    text-align: center;
+    color: #6c757d;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Labels de formulario */
+.form-label {
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Campos de entrada MÁS REDONDEADOS */
+.form-control {
+    border-radius: 25px; /* MÁS REDONDEADOS como en la imagen */
+    border: 2px solid #e9ecef;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.form-control:focus {
+    border-color: #bd181d; /* Color marrón del diseño */
+    box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.25);
+    background-color: #fff;
+}
+
+.form-control::placeholder {
+    color: #adb5bd;
+}
+
+/* Checkbox */
+.form-check-label {
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+.form-check-input:checked {
+    background-color: #e31e24;
+    border-color: #e31e24;
+}
+
+/* Botón principal MÁS REDONDEADO */
+.btn-auth-action {
+    background-color: #F5A42A ; /* Color marrón como en la imagen */
+    border-color: #F5A42A ;
+    color: white;
+    font-weight: bold;
+    padding: 0.875rem 0;
+    font-size: 1rem;
+    border-radius: 25px; /* MÁS REDONDEADO */
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-auth-action:hover {
+    background-color: #B58B4C ;
+    border-color: #B58B4C ;
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* Estilos adicionales que podrías necesitar */
+.toast-container { z-index: 1055; }
+
+/* Media queries para responsive */
+@media (max-width: 991.98px) {
+    .auth-wrapper {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    body {
+        overflow: auto;
+    }
+
+    .auth-image-column {
+        min-height: 300px;
+        flex: none;
+    }
+
+    .auth-form-column {
+        flex: none;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .auth-wrapper {
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .auth-image-column {
+        min-height: 200px;
+        padding: 2rem;
+    }
+
+    .auth-image-column h3 {
+        font-size: 1.4rem;
+    }
+
+    .auth-image-column p {
+        font-size: 1rem;
+    }
+
+    .auth-form-column {
+        padding: 1.5rem;
+    }
+
+    .nav-tabs .nav-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+
+    .davivienda-logo-auth {
+    width: 22rem;
+}
+}
